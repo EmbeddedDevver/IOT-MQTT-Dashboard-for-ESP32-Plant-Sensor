@@ -117,7 +117,8 @@ def device_info(request, device_id):
     except:
         pass
     date_of_today = datetime.date.today()
-    last10days = datetime.datetime(date_of_today.year, date_of_today.month,  date_of_today.day -9)
+    # last10days = datetime.datetime(date_of_today.year, date_of_today.month,  date_of_today.day -9)
+    last10days = datetime.datetime.combine(date_of_today, datetime.time.min) - datetime.timedelta(days=9)
     labels =[]
     Lux_Log = []
     Humidity_Log = []
