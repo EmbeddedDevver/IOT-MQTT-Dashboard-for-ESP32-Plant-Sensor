@@ -116,11 +116,8 @@ def device_info(request, device_id):
         data = LogInfo.objects.filter(id_device=device_id).latest("Time_Log")
     except:
         pass
-
     date_of_today = datetime.date.today()
-    print(f"WPDebug: date_of_today = {date_of_today}")
-    # last10days = datetime.datetime(date_of_today.year, date_of_today.month,  date_of_today.day -9)
-    last10days = datetime.datetime.combine(date_of_today, datetime.time.min) - datetime.timedelta(days=9)
+    last10days = datetime.datetime(date_of_today.year, date_of_today.month,  date_of_today.day -9)
     labels =[]
     Lux_Log = []
     Humidity_Log = []
@@ -164,7 +161,6 @@ def device_info(request, device_id):
     add_new_device = AddNewDevice(request.POST or None)
 
     # Checks if form request is POST
-    print("WpDebug: 1")
     if request.method == "POST":
         # Checks if add new device info is valid an entered currectly
         if add_new_device.is_valid:

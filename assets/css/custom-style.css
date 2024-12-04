@@ -1,10 +1,32 @@
+@font-face {
+    font-family: 'Iran-SansDN';
+    src: url('../fonts/IRANsanDN/IRANSansDN/IRANSansDN.eot');
+    src: url('../fonts/IRANsanDN/IRANSansDN/IRANSansDN.eot?#iefix') format('embedded-opentype'), url('..IRANSansDN/IRANSansDN.woff') format('woff'), url('../fonts/IRANsanDN/IRANSansDN/IRANSansDN.ttf') format('truetype'), url('../fonts/IRANsanDN/IRANSansDN/IRANSansDN.svg') format('svg');
+    font-weight: 500px;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Iran-SansDN-Bold';
+    src: url('../fonts/IRANsanDN/IRANSansDN-Bold/IRANSansDN-Bold.eot');
+    src: url('../fonts/IRANsanDN/IRANSansDN-Bold/IRANSansDN-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/IRANsanDN/IRANSansDN-Bold/IRANSansDN-Bold.woff') format('woff'), url('../fonts/IRANsanDN/IRANSansDN-Bold/IRANSansDN-Bold.ttf') format('truetype'), url('../fonts/IRANsanDN/IRANSansDN-Bold/IRANSansDN-Bold.svg') format('svg');
+    font-weight: bold;
+    font-style: bold;
+}
+
+@font-face {
+    font-family: 'Iran-SansDN-Light';
+    src: url('../fonts/IRANsanDN/IRANSansDN_Light/IRANSansDN_Light.eot');
+    src: url('../fonts/IRANsanDN/IRANSansDN_Light/IRANSansDN_Light.eot?#iefix') format('embedded-opentype'), url('../fonts/IRANsanDN/IRANSansDN_Light/IRANSansDN_Light.woff') format('woff'), url('../fonts/IRANsanDN/IRANSansDN_Light/IRANSansDN_Light.ttf') format('truetype'), url('../fonts/IRANsanDN/IRANSansDN_Light/IRANSansDN_Light.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 
 
 /*---------------------------------- End of fonts ---------------------------------- */
 
 body {
-    /* font-family: 'Iran-SansDN'; */
-    font-family: 'Arial';
+    font-family: 'Iran-SansDN';
 }
 
 .ltr {
@@ -294,5 +316,5 @@ div.icon-white i {
 /*---------------------------------- Persian Date Picker ---------------------------------- */
 
 .datepicker-plot-area {
-    /* font-family: 'Iran-SansDN'; */
+    font-family: 'Iran-SansDN';
 }
