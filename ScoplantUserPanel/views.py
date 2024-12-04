@@ -9,7 +9,7 @@ from ScoplantDevices.models import *
 from ScoplantLogInfo.models import *
 from random import randint
 from jdatetime import date
-# from jalaali import Jalaali
+from jalaali import Jalaali
 from django.shortcuts import render
 from django.http import HttpResponse
 import pathlib
@@ -145,10 +145,9 @@ def device_info(request, device_id):
     for record in LogsQS:
         # Convert gregorian date into jalali date
         DateLOG = str(record.Date_Log)
-        JDateLOG = DateLOG
-        # JDateLOG = Jalaali.to_jalaali(
-        #     int(DateLOG[0:4]), int(DateLOG[5:7]), int(DateLOG[8:10]))
-        # JDateLOG = f"{JDateLOG['jy']}-{JDateLOG['jm']}-{JDateLOG['jd']}"
+        JDateLOG = Jalaali.to_jalaali(
+            int(DateLOG[0:4]), int(DateLOG[5:7]), int(DateLOG[8:10]))
+        JDateLOG = f"{JDateLOG['jy']}-{JDateLOG['jm']}-{JDateLOG['jd']}"
         each_data = f"{record.Date_Log}, {record.Time_Log}, {record.Lux_Log}, {record.Humidity_Log}, {record.Temperature_Log}, {record.SoilMoisture_Log}, {record.SoilTemperature_Log}, {record.EC_Log}"
 
         lstRecords.append(each_data)
@@ -281,10 +280,9 @@ def reporting_device(request, device_id):
                 for record in LogsQS:
                     # Convert gregorian date into jalali date
                     DateLOG = str(record.Date_Log)
-                    JDateLOG = DateLOG
-                    # JDateLOG = Jalaali.to_jalaali(
-                    #     int(DateLOG[0:4]), int(DateLOG[5:7]), int(DateLOG[8:10]))
-                    # JDateLOG = f"{JDateLOG['jy']}-{JDateLOG['jm']}-{JDateLOG['jd']}"
+                    JDateLOG = Jalaali.to_jalaali(
+                        int(DateLOG[0:4]), int(DateLOG[5:7]), int(DateLOG[8:10]))
+                    JDateLOG = f"{JDateLOG['jy']}-{JDateLOG['jm']}-{JDateLOG['jd']}"
 
                     # Remove ms from Time_Log
                     TimeLOG = record.Time_Log
@@ -563,10 +561,9 @@ def reporting_device(request, device_id):
                 for record in LogsQS:
                     # Convert gregorian date into jalali date
                     DateLOG = str(record.Date_Log)
-                    JDateLOG = DateLOG
-                    # JDateLOG = Jalaali.to_jalaali(
-                    #     int(DateLOG[0:4]), int(DateLOG[5:7]), int(DateLOG[8:10]))
-                    # JDateLOG = f"{JDateLOG['jy']}-{JDateLOG['jm']}-{JDateLOG['jd']}"
+                    JDateLOG = Jalaali.to_jalaali(
+                        int(DateLOG[0:4]), int(DateLOG[5:7]), int(DateLOG[8:10]))
+                    JDateLOG = f"{JDateLOG['jy']}-{JDateLOG['jm']}-{JDateLOG['jd']}"
                     each_data = f"{record.Date_Log}, {record.Time_Log}, {record.Lux_Log}, {record.Humidity_Log}, {record.Temperature_Log}, {record.SoilMoisture_Log}, {record.SoilTemperature_Log}, {record.EC_Log}"
 
                     lstRecords.append(each_data)
