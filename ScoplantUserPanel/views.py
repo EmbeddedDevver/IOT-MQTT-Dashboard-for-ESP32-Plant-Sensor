@@ -9,7 +9,7 @@ from ScoplantDevices.models import *
 from ScoplantLogInfo.models import *
 from random import randint
 from jdatetime import date
-from jalaali import Jalaali
+# from jalaali import Jalaali
 from django.shortcuts import render
 from django.http import HttpResponse
 import pathlib
@@ -116,8 +116,11 @@ def device_info(request, device_id):
         data = LogInfo.objects.filter(id_device=device_id).latest("Time_Log")
     except:
         pass
+
     date_of_today = datetime.date.today()
-    last10days = datetime.datetime(date_of_today.year, date_of_today.month,  date_of_today.day -9)
+    print(f"WPDebug: date_of_today = {date_of_today}")
+    # last10days = datetime.datetime(date_of_today.year, date_of_today.month,  date_of_today.day -9)
+    last10days = datetime.datetime.combine(date_of_today, datetime.time.min) - datetime.timedelta(days=9)
     labels =[]
     Lux_Log = []
     Humidity_Log = []
@@ -142,9 +145,10 @@ def device_info(request, device_id):
     for record in LogsQS:
         # Convert gregorian date into jalali date
         DateLOG = str(record.Date_Log)
-        JDateLOG = Jalaali.to_jalaali(
-            int(DateLOG[0:4]), int(DateLOG[5:7]), int(DateLOG[8:10]))
-        JDateLOG = f"{JDateLOG['jy']}-{JDateLOG['jm']}-{JDateLOG['jd']}"
+        JDateLOG = DateLOG
+        # JDateLOG = Jalaali.to_jalaali(
+        #     int(DateLOG[0:4]), int(DateLOG[5:7]), int(DateLOG[8:10]))
+        # JDateLOG = f"{JDateLOG['jy']}-{JDateLOG['jm']}-{JDateLOG['jd']}"
         each_data = f"{record.Date_Log}, {record.Time_Log}, {record.Lux_Log}, {record.Humidity_Log}, {record.Temperature_Log}, {record.SoilMoisture_Log}, {record.SoilTemperature_Log}, {record.EC_Log}"
 
         lstRecords.append(each_data)
@@ -161,6 +165,7 @@ def device_info(request, device_id):
     add_new_device = AddNewDevice(request.POST or None)
 
     # Checks if form request is POST
+    print("WpDebug: 1")
     if request.method == "POST":
         # Checks if add new device info is valid an entered currectly
         if add_new_device.is_valid:
@@ -276,9 +281,10 @@ def reporting_device(request, device_id):
                 for record in LogsQS:
                     # Convert gregorian date into jalali date
                     DateLOG = str(record.Date_Log)
-                    JDateLOG = Jalaali.to_jalaali(
-                        int(DateLOG[0:4]), int(DateLOG[5:7]), int(DateLOG[8:10]))
-                    JDateLOG = f"{JDateLOG['jy']}-{JDateLOG['jm']}-{JDateLOG['jd']}"
+                    JDateLOG = DateLOG
+                    # JDateLOG = Jalaali.to_jalaali(
+                    #     int(DateLOG[0:4]), int(DateLOG[5:7]), int(DateLOG[8:10]))
+                    # JDateLOG = f"{JDateLOG['jy']}-{JDateLOG['jm']}-{JDateLOG['jd']}"
 
                     # Remove ms from Time_Log
                     TimeLOG = record.Time_Log
@@ -557,9 +563,10 @@ def reporting_device(request, device_id):
                 for record in LogsQS:
                     # Convert gregorian date into jalali date
                     DateLOG = str(record.Date_Log)
-                    JDateLOG = Jalaali.to_jalaali(
-                        int(DateLOG[0:4]), int(DateLOG[5:7]), int(DateLOG[8:10]))
-                    JDateLOG = f"{JDateLOG['jy']}-{JDateLOG['jm']}-{JDateLOG['jd']}"
+                    JDateLOG = DateLOG
+                    # JDateLOG = Jalaali.to_jalaali(
+                    #     int(DateLOG[0:4]), int(DateLOG[5:7]), int(DateLOG[8:10]))
+                    # JDateLOG = f"{JDateLOG['jy']}-{JDateLOG['jm']}-{JDateLOG['jd']}"
                     each_data = f"{record.Date_Log}, {record.Time_Log}, {record.Lux_Log}, {record.Humidity_Log}, {record.Temperature_Log}, {record.SoilMoisture_Log}, {record.SoilTemperature_Log}, {record.EC_Log}"
 
                     lstRecords.append(each_data)

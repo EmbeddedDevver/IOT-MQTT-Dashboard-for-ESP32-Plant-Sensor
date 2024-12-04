@@ -41,11 +41,30 @@
         <form role="form" method="POST" action="#" class="col-md-12">
             {% csrf_token %}
             <div class="card-body">
-                <div class="form-group col-md-3" style="float: right; padding: 2px; ">
-                    <label>Start date:</label> {{ export_methods.start_date }}
+                <!-- <div class="form-group col-md-3" style="float: right; padding: 2px; ">
+                    <label>Start datex:</label> {{ export_methods.start_date }}
+                </div> -->
+                <div class="form-group col-md-3" style="float: right; padding: 2px;">
+                    <label>Start date:</label>
+                    <input 
+                        type="date" 
+                        id="start_date" 
+                        name="start_date" 
+                        value="{{ export_methods.start_date|date:'Y-m-d' }}" 
+                        class="form-control">
                 </div>
-                <div class="form-group col-md-3" style="float: right; padding: 2px; ">
-                    <label>End date:</label>{{ export_methods.end_date }}
+
+                <!-- <div class="form-group col-md-3" style="float: right; padding: 2px; ">
+                    <label>End datex:</label>{{ export_methods.end_date }}
+                </div> -->
+                <div class="form-group col-md-3" style="float: right; padding: 2px;">
+                    <label>End date:</label>
+                    <input 
+                        type="date" 
+                        id="end_date" 
+                        name="end_date" 
+                        value="{{ export_methods.end_date|date:'Y-m-d' }}" 
+                        class="form-control">
                 </div>
 
                 <div id="morePDFexport">
